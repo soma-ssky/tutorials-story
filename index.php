@@ -4,55 +4,103 @@
   <meta charset="utf-8">
   <title>SSKY STORY</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+
+  <!--UI-->
   <script src="./js/jquery.min.js"></script>
   <script src="./js/kendo.mobile.min.js"></script>
   <link href="./styles/kendo.common.min.css" rel="stylesheet" />
   <link href="./styles/kendo.mobile.all.min.css" rel="stylesheet" />
-  <script src="js/ssky-1.0.js"></script>
 
+  <!--SSKY_LIBRARY-->
+  <script src="js/ssky-1.0.js"></script>
+  <script src="js/story.js"></script>
+
+  <!--APPLICATION-->
   <meta name="viewport" content="width=320.1, user-scalable=0, initial-scale=1.0" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 </head> 
 <body>
 
-<div data-before-show="newsfeedView_load" data-role="view" data-layout="overview-layout" id="overview-newsfeed" data-title="뉴스피드">
+
+<script>
+function initPullToRefreshScroller(e) {
+  var scroller = e.view.scroller;
+  scroller.setOptions({
+      pullToRefresh: true,
+      pull: function() {
+        setTimeout(function() { scroller.pullHandled(); }, 800);
+      }
+  });
+}
+</script>
+
+
+
+<div data-before-show="loginView_load" data-role="view" data-layout="overview-layout" data-title="SSKY" id="overview-login">
+    <header data-role="header">
+    </header>
+    <div id="loginView_Logo">SSKY STORY</div>
+
+    <ul data-role="listview" data-style="inset">
+        <li><label for="username">Username:</label> <input type="text" id="username" /></li>
+        <li><label for="password">Password:</label> <input type="password" id="password" /></li>
+    </ul>
+    <a id="login-button" type="button" data-role="button" data-click="loginFunction">Login</a>
+    <a id="reg-button" type="button" data-role="button" href="#overview-register">Register</a>
+    <a id="facebook-button" type="button" data-role="button">Login with Facebook</a>
+
+    <footer data-role="footer">
+    </footer>
+</div>
+
+
+<div data-role="view" data-layout="overview-layout" data-title="SSKY" id="overview-register">
+    <div data-role="header">
+        <div data-role="navbar">
+            <span>Register</span>
+            <a data-role="backbutton" data-align="left">Cancel</a>
+            <a data-role="button" data-align="right">Submit</a>
+        </div>
+    </div>
+
+    <ul data-role="listview" data-style="inset">
+        <li><label for="register_username">Username:</label> <input type="text" id="register_username" /></li>
+        <li><label for="register_password">Password:</label> <input type="password" id="register_password" /></li>
+        <li><label for="register_email">Email:</label> <input type="text" id="register_email" /></li>
+    </ul>
+
+    <footer data-role="footer">
+    </footer>
+</div>
+
+
+
+<div data-before-show="newsfeedView_load" data-role="view" data-layout="overview-layout" id="overview-newsfeed" data-title="뉴스피드"  data-init="initPullToRefreshScroller">
   <ul data-role="listview" data-style="inset" data-type="group">
+
         <li>
             양준혁
             <ul>
-                <li><h2>Nairobi</h2><img src="./examples/content/mobile/overview/nairobi.jpg" /></li>
+                <li>
+                 ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ<br>
+                 <img src="res/mystory.jpg" width="100%" style="padding-top:7px">
+                </li>
             </ul>
         </li>
+        <li>
+
         <li>
             김태훈
             <ul>
-                <li><h2>Boston</h2><img src="./examples/content/mobile/overview/boston.jpg" /></li>
-                <li><h2>Ottawa</h2><img src="./examples/content/mobile/overview/ottawa.jpg" /></li>
-                <li><h2>San Francisco</h2><img src="./examples/content/mobile/overview/san-francisco.jpg" /></li>
+                <li>
+                 ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ<br>
+                 <img src="res/mystory.jpg" width="100%" style="padding-top:7px">
+                </li>
             </ul>
         </li>
         <li>
-            Asia
-            <ul>
-                <li><h2>Bombay</h2><img src="./examples/content/mobile/overview/bombay.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            Australia
-            <ul>
-                <li><h2>Melbourne</h2><img src="./examples/content/mobile/overview/melbourne.jpg" /></li>
-                <li><h2>Sydney</h2><img src="./examples/content/mobile/overview/sydney.jpg" /></li>
-            </ul>
-        </li>
-        <li>
-            Europe
-            <ul>
-                <li><h2>Cannes</h2><img src="./examples/content/mobile/overview/cannes.jpg" /></li>
-                <li><h2>Liverpool</h2><img src="./examples/content/mobile/overview/liverpool.jpg" /></li>
-                <li><h2>London</h2><img src="./examples/content/mobile/overview/london.jpg" /></li>
-            </ul>
-        </li>
+
     </ul>
 </div>
 
@@ -65,39 +113,54 @@
           <a data-align="right" data-role="button" class="nav-button" data-icon="writeicon" href="#overview-write" id="writeButton"></a>
         </div>
     </header>
-
-    <div id="scrollview-container">
-        <div data-role="scrollview">
-            <div class="photo photo1"></div>
-
-            <div class="photo photo2"></div>
-
-            <div class="photo photo3"></div>
-
-            <div class="photo photo4"></div>
-
-            <div class="photo photo5"></div>
-
-            <div class="photo photo6"></div>
-
-            <div class="photo photo7"></div>
-
-            <div class="photo photo8"></div>
-
-            <div class="photo photo9"></div>
-
-            <div class="photo photo10"></div>
-        </div>
-    </div>
 </div>
 
 
 
-
 <div data-before-show="myfriendsView_load" data-role="view" data-layout="overview-layout" id="overview-myfriends" data-title="친구목록">
-    <ul data-role="listview" data-type="group">
+    <header data-role="header">
+        <div data-role="navbar">
+            <ul data-role="buttongroup" data-index="0" data-select="friendsBar">
+                <li>
+                    친구목록
+                </li>
+                <li>
+                    친구찾기
+                </li>
+                <li>
+                    친구신청
+                </li>
+            </ul>
+        </div>
+    </header>
+
+   <ul data-role="listview" data-type="group" id="friendsSubView1">
         <li>
-            A
+          내 친구목록
+            <ul>
+                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /> <a data-role="button" class="unFriendsBtn">삭제</a></li>
+                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /></li>
+                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /></li>
+                <li><h2>Carine Schmitt</h2><img src="./examples/content/mobile/overview/carine.jpg" /></li>
+                <li><h2>Catherine Dewey</h2><img src="./examples/content/mobile/overview/catherine.jpg" /></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul data-role="listview" data-type="group" id="friendsSubView2" style="display:none">
+        <li>
+          페이스북으로 친구찾기
+            <ul>
+                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /></li>
+                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /></li>
+                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul data-role="listview" data-type="group" id="friendsSubView3" style="display:none">
+      <li>
+          받은신청
             <ul>
                 <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /></li>
                 <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /></li>
@@ -105,30 +168,31 @@
             </ul>
         </li>
         <li>
-            C
+          보낸신청
             <ul>
                 <li><h2>Carine Schmitt</h2><img src="./examples/content/mobile/overview/carine.jpg" /></li>
                 <li><h2>Catherine Dewey</h2><img src="./examples/content/mobile/overview/catherine.jpg" /></li>
             </ul>
         </li>
     </ul>
+
 </div>
 
 <div data-before-show="moreView_load" data-role="view" data-layout="overview-layout" data-init="mobileAccountViewInit" id="overview-more" data-title="더보기">
     <ul id="settings-view" data-index="0">
         <li>
-            Profile
+            프로필설정
         </li>
         <li>
-            General
+            환경설정
         </li>
         <li>
-            Group
+            개발자소개
         </li>
     </ul>
     <ul data-role="listview" data-style="inset" data-type="group">
         <li>
-            Profile
+            나의 프로필
             <ul>
                 <li><h2>Christina <span>Berglund</span></h2><img src="./examples/content/mobile/overview/christina.jpg" /></li>
                 <li>Username <span class="value">christina</span></li>
@@ -136,43 +200,70 @@
             </ul>
         </li>
         <li>
-            Languages
+            SNS 설정
             <ul>
-                <li>English <span class="value">Native</span></li>
-                <li>French<span class="value">Advanced</span></li>
+                <li>페이스북 연동 <input type="checkbox" data-role="switch" checked></li>
             </ul>
         </li>
         <li>
-            PC Skills
+            계정관리
             <ul>
-                <li>MS Word</li>
-                <li>MS Excel</li>
-                <li>MS Outlook</li>
-                <li>MS PowerPoint</li>
-                <li>Windows (XP, Vista)</li>
-                <li>Internet</li>
+                <li>회원정보 수정</li>
+                <li>로그아웃</li>
             </ul>
         </li>
     </ul>
     <ul data-role="listview" data-style="inset" data-type="group" style="display:none">
         <li>
-            General Settings
             <ul>
-                <li>Notifications <input type="checkbox" data-role="switch" checked></li>
-                <li>Local Services <input type="checkbox" data-role="switch"></li>
-                <li><a>About</a></li>
+                <li><a>공지사항</a></li>
+                <li>버전정보<span class="value">1.2</span></li>
+                <li><a>도움말</a></li>
+            </ul>
+            <br>
+            <ul>
+                <li>푸시알림 <input type="checkbox" data-role="switch" checked></li>
+                <li>자동사진 저장 <input type="checkbox" data-role="switch"></li>
+                <li><a>캐쉬 삭제</a></li>
             </ul>
         </li>
     </ul>
+
     <ul data-role="listview" data-style="inset" data-type="group" style="display:none">
         <li>
-            Group
             <ul>
-                <li><a>Your Group Name</a></li>
-                <li><a>Group Email</a></li>
+                <li><h2>멘토<span>송치형</span></h2><img src="./res/profile_1.png" /></li>
+                <li>개발분야 <span class="value">개발기획</span></li>
+                <li>Email <span class="value">scroco@gmail.com</span></li>
+            </ul>
+        </li>
+
+        <li>
+            <ul>
+                <li><h2>팀장 <span>김태훈</span></h2><img src="./res/profile_2.png" /></li>
+                <li>개발분야 <span class="value">안드로이드, 자바, 백엔드</span></li>
+                <li>Email <span class="value">conakuki@gmail.com</span></li>
+            </ul>
+        </li>
+
+        <li>
+            <ul>
+                <li><h2>팀원 <span>양준혁</span></h2><img src="./res/profile_3.png" /></li>
+                <li>개발분야 <span class="value">웹,아이폰,서버</span></li>
+                <li>Email <span class="value">yangjunehyuk@gmail.com</span></li>
+                <li>Web <span class="value">http://joyjune.com/</span></li>
+            </ul>
+        </li>
+
+        <li>
+            <ul>
+                <li><h2>팀원 <span>송용주</span></h2><img src="./res/profile_4.png" /></li>
+                <li>개발분야 <span class="value">데이터베이스</span></li>
+                <li>Email <span class="value">stankonlines@gmail.com</span></li>
             </ul>
         </li>
     </ul>
+
 </div>
 
 
@@ -182,7 +273,7 @@
         <div data-role="navbar" class="fileinput-button">
             <span data-role="view-title"></span>
             <a data-align="left" data-role="button" class="nav-button" data-click="writeBack">Back</a>
-            <div data-align="right" data-role="button" class="nav-button"><input type="file" id="profilePhotoFileUpload" onclick="fileClick();"><span class="km-icon km-camera" style="margin-left:7px;"></span></input></div>
+            <div data-align="right" data-role="button" class="nav-button" id="inputPhotoBtn"><input type="file" id="profilePhotoFileUpload" onclick="fileClick();"><span class="km-icon km-camera" style="margin-left:7px;"></span></input></div>
         </div>
     </header>
 
@@ -218,6 +309,37 @@
 <script>
 
 
+///////////////////////////////////////////////////////
+// 친구 관련부분
+///////////////////////////////////////////////////////
+function friendsBar() {
+  $("#friendsSubView1").css("display","none");
+  $("#friendsSubView2").css("display","none");
+  $("#friendsSubView3").css("display","none");
+
+  if(this.selectedIndex==0){
+  $("#friendsSubView1").css("display","block");
+  } else if(this.selectedIndex==1) {
+  $("#friendsSubView2").css("display","block");
+  } else {
+  $("#friendsSubView3").css("display","block");
+  }
+}
+
+///////////////////////////////////////////////////////
+// 로그인 부분
+///////////////////////////////////////////////////////
+
+
+function loginFunction(){
+  location.href = "#overview-newsfeed";
+}
+
+
+
+function closeModalViewJoin() {
+    $("#modalview-join").kendoMobileModalView("close");
+}
 
 
 ///////////////////////////////////////////////////////
@@ -228,9 +350,15 @@
   var writeMode = 0;
   var writeFileMode = 0;
   function WriteMethod(){
-    if(writeFileMode==0){
-      $(".km-tabstrip").show();
-      location.href = "#overview-mystory";
+
+    if(writeFileMode==0 && writeMode ==1){
+      kendoMobileApplication.showLoading(); 
+      setTimeout(function() { 
+        kendoMobileApplication.hideLoading();
+        $(".km-tabstrip").show();
+        location.href = "#overview-mystory";
+      }, 2500);
+
     }
   }
 
@@ -243,7 +371,7 @@
   document.addEventListener('focusout', function(e) { 
     if(writeMode==1){
       writeFileMode = 0;
-      setTimeout(WriteMethod,500);
+      setTimeout(WriteMethod,700);
     }
    });
 
@@ -254,62 +382,106 @@
     $(".km-tabstrip").hide();
   });
 
+  //뒤로가기
   function writeBack(){
     writeMode = 0;
     location.href = "#overview-mystory";
     $(".km-tabstrip").show();
   }
-
-
-
-
-
+  
+  //사진을 첨부했을때
+  $("#profilePhotoFileUpload").on('change',function() {
+    $("#inputPhotoBtn").css("background-color","#25b3fd");
+    setTimeout(function(){ document.myform.mytextfield.focus(); },100);
+  });
 
 
 ///////////////////////////////////////////////////////
 // 뷰 관련 부분
 ///////////////////////////////////////////////////////
+  function loginView_load(){
 
+  }
+
+  //글쓰기뷰
   function writeView_load(){
+    $('textarea#mytextfield').val('');
+    $("#inputPhotoBtn").css("background-color","#dcdcdc");
+    writeMode = 1;
     $(".km-tabstrip").hide();
     setTimeout(function(){ document.myform.mytextfield.focus(); },500);
   }
 
+  //뉴스피드뷰
   function newsfeedView_load(){
   
   }
 
+  //마이스토리뷰
   function mystoryView_load(){
 
 
   }
 
+  //친구목록뷰
   function myfriendsView_load(){
-
-
 
   }
 
+  //더보기뷰
   function moreView_load(){
 
   }
 
-
   function mobileAccountViewInit() {
-      var listviews = this.element.find("ul.km-listview");
+    var listviews = this.element.find("ul.km-listview");
 
-      $("#settings-view").kendoMobileButtonGroup({
-          select: function() {
-              listviews.hide()
-                       .eq(this.selectedIndex)
-                       .show();
-          },
-          index: 0
-      });
+    $("#settings-view").kendoMobileButtonGroup({
+        select: function() {
+            listviews.hide()
+             .eq(this.selectedIndex)
+             .show();
+        },
+        index: 0
+    });
   }
 </script>
 
 <style scoped>
+#loginView_Logo{
+  padding-top:40px;
+  padding-bottom:10px;
+  
+  font-size:30pt;
+  text-align: center;
+}
+
+#login-button,
+#reg-button,
+#facebook-button {
+    display: block;
+    text-align: center;
+    margin: .6em .8em 0;
+    font-size: 1.2em;
+}
+
+#login-button{
+    background-color: Green;
+    color: #fff;
+}
+
+.unFriendsBtn {
+  margin-top:13px;
+  float: right;
+}
+
+.addFriendsBtn {
+  float: right;
+}
+
+.okFriendsBtn {
+  float: right;
+}
 
 
 .km-writeicon:after,
@@ -318,26 +490,26 @@
     content: "\e07b";
 }
 
-#overview-contacts h2,
+#overview-myfriends h2,
 #overview-cities h2 {
     display: inline-block;
     font-size: 1.1em;
     margin: 1em 0 .5em 1em;
 }
-#overview-account h2 {
+#overview-more h2 {
     display: inline-block;
     font-size: 1.1em;
     margin: 1.5em 0 0 .6em;
 }
-#overview-account h2 span {
+#overview-more h2 span {
     display: block;
     clear: both;
     font-size: 1.8em;
     margin: .1em 0 0 0;
 }
-#overview-contacts img,
+#overview-myfriends img,
 #overview-cities img,
-#overview-account img {
+#overview-more img {
     float: left;
     width: 4em;
     height: 4em;
@@ -348,28 +520,32 @@
     border-radius: 8px;
 }
 
-.km-flat #overview-contacts img,
+.km-flat #overview-myfriends img,
 .km-flat #overview-cities img,
-.km-flat #overview-account img {
+.km-flat #overview-more img {
     -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,.1);
     box-shadow: 0 0 0 1px rgba(0,0,0,.1);
     -webkit-border-radius: 4px;
     border-radius: 4px;
 }
 
-#overview-account img {
+#overview-more img {
     width: 5em;
     height: 5em;
     margin: 1em;
 }
-#overview-account .value {
+#overview-more .value {
     float: right;
     color: #ccc;
 }
 #settings-view {
     margin: 1em auto .4em auto;
 }
-#overview-gallery .photo {
+#friends-view {
+    margin: 1em auto .4em auto;
+}
+
+#overview-mystory .photo {
     width: 277px;
     margin: 20px 20px 7px;
     height: 220px;
@@ -380,40 +556,20 @@
     background-position: center center;
     -webkit-transform: translatez(0);
 }
-.km-wp #overview-gallery .photo {
+.km-wp #overview-mystory .photo {
     width: 15em;
     height: 15em;
 }
-.photo1 {background-image: url("./examples/content/mobile/cities/220/sydney.jpg");}
-.photo2 {background-image: url("./examples/content/mobile/cities/220/bonn.jpg");}
-.photo3 {background-image: url("./examples/content/mobile/cities/220/boston.jpg");}
-.photo4 {background-image: url("./examples/content/mobile/cities/220/cairo.jpg");}
-.photo5 {background-image: url("./examples/content/mobile/cities/220/cancun.jpg");}
-.photo6 {background-image: url("./examples/content/mobile/cities/220/cape-town.jpg");}
-.photo7 {background-image: url("./examples/content/mobile/cities/220/liverpool.jpg");}
-.photo8 {background-image: url("./examples/content/mobile/cities/220/london.jpg");}
-.photo9 {background-image: url("./examples/content/mobile/cities/220/melbourne.jpg");}
-.photo10 {background-image: url("./examples/content/mobile/cities/220/san-francisco.jpg");}
 
-#scrollview-container {
-    margin: 3px 0 1em 0;
-    padding-bottom: 10px;
-    background: rgba(0,0,0,.1);
-    border: 1px solid rgba(0,0,0,.3);
-    border-width: 1px 0;
-    box-shadow: 0 1px 1px rgba(255,255,255,.3);
-}
-.km-flat #scrollview-container {
+.km-flat {
     background: transparent;
     border: 0;
     box-shadow: none;
 }
 
-#overview-gallery .km-ios .km-content {
+#overview-mystory .km-ios .km-content {
     background: #bbb;
 }
-
-
 
 .fileinput-button input {
   position: absolute;
@@ -455,9 +611,6 @@ body,html{background-color:#f4f4f4;}
   });
 
 </script>
-
-
-
 
 
 </body>
