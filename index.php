@@ -24,6 +24,7 @@
 
 
 <script>
+
 function initPullToRefreshScroller(e) {
   var scroller = e.view.scroller;
   scroller.setOptions({
@@ -33,7 +34,20 @@ function initPullToRefreshScroller(e) {
       }
   });
 }
+
+
 </script>
+
+
+
+<div data-role="view" data-layout="loadingView" data-title="SSKY" id="loadingView">
+    <header data-role="header">
+    </header>
+
+    <footer data-role="footer">
+    </footer>
+</div>
+
 
 
 
@@ -42,13 +56,15 @@ function initPullToRefreshScroller(e) {
     </header>
     <div id="loginView_Logo">SSKY STORY</div>
 
+    <form class="login-form">
     <ul data-role="listview" data-style="inset">
-        <li><label for="username">Username:</label> <input type="text" id="username" /></li>
-        <li><label for="password">Password:</label> <input type="password" id="password" /></li>
+        <li><label for="username">Username:</label> <input type="text" id="login-username" /></li>
+        <li><label for="password">Password:</label> <input type="password" id="login-password" /></li>
     </ul>
     <a id="login-button" type="button" data-role="button" data-click="loginFunction">Login</a>
     <a id="reg-button" type="button" data-role="button" href="#overview-register">Register</a>
-    <a id="facebook-button" type="button" data-role="button">Login with Facebook</a>
+    <a id="facebook-button" type="button" data-role="button" data-click="loginWithFacebookFunction">Login with Facebook</a>
+    </form>
 
     <footer data-role="footer">
     </footer>
@@ -60,7 +76,7 @@ function initPullToRefreshScroller(e) {
         <div data-role="navbar">
             <span>Register</span>
             <a data-role="backbutton" data-align="left">Cancel</a>
-            <a data-role="button" data-align="right">Submit</a>
+            <a data-role="button" data-align="right" data-click="registerFunction">Submit</a>
         </div>
     </div>
 
@@ -83,12 +99,12 @@ function initPullToRefreshScroller(e) {
             양준혁
             <ul>
                 <li>
-                 ㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇㄹㅁㄴㅇ<br>
+                 adsfasdfasdf
                  <img src="res/mystory.jpg" width="100%" style="padding-top:7px">
                 </li>
             </ul>
         </li>
-        <li>
+
 
         <li>
             김태훈
@@ -99,7 +115,7 @@ function initPullToRefreshScroller(e) {
                 </li>
             </ul>
         </li>
-        <li>
+
 
     </ul>
 </div>
@@ -113,6 +129,11 @@ function initPullToRefreshScroller(e) {
           <a data-align="right" data-role="button" class="nav-button" data-icon="writeicon" href="#overview-write" id="writeButton"></a>
         </div>
     </header>
+
+  <ul id="mystoryView" data-role="listview" data-style="inset" data-type="group">
+    
+ 
+  </ul>
 </div>
 
 
@@ -122,10 +143,10 @@ function initPullToRefreshScroller(e) {
         <div data-role="navbar">
             <ul data-role="buttongroup" data-index="0" data-select="friendsBar">
                 <li>
-                    친구목록
+                    친구찾기
                 </li>
                 <li>
-                    친구찾기
+                  친구목록
                 </li>
                 <li>
                     친구신청
@@ -136,24 +157,28 @@ function initPullToRefreshScroller(e) {
 
    <ul data-role="listview" data-type="group" id="friendsSubView1">
         <li>
-          내 친구목록
-            <ul>
-                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /> <a data-role="button" class="unFriendsBtn">삭제</a></li>
-                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /></li>
-                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /></li>
-                <li><h2>Carine Schmitt</h2><img src="./examples/content/mobile/overview/carine.jpg" /></li>
-                <li><h2>Catherine Dewey</h2><img src="./examples/content/mobile/overview/catherine.jpg" /></li>
+          SSKY를 하는 친구들
+          <ul>
+              <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+              <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+              <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+         </ul>
+       </li>
+        <li>
+          페이스북으로 친구찾기
+            <ul id="friendsbyFacebook">
+              <li> 친구를 불러오고 있습니다. 잠시 기다려주세요.</li>
             </ul>
         </li>
     </ul>
 
     <ul data-role="listview" data-type="group" id="friendsSubView2" style="display:none">
         <li>
-          페이스북으로 친구찾기
+          내 친구목록
             <ul>
-                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /></li>
-                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /></li>
-                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /></li>
+                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
             </ul>
         </li>
     </ul>
@@ -162,16 +187,16 @@ function initPullToRefreshScroller(e) {
       <li>
           받은신청
             <ul>
-                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /></li>
-                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /></li>
-                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /></li>
+                <li><h2>Ann Devon</h2><img src="./examples/content/mobile/overview/ann.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+                <li><h2>Annette Roulet</h2><img src="./examples/content/mobile/overview/annette.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+                <li><h2>Antonio Moreno</h2><img src="./examples/content/mobile/overview/antonio.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
             </ul>
         </li>
         <li>
           보낸신청
             <ul>
-                <li><h2>Carine Schmitt</h2><img src="./examples/content/mobile/overview/carine.jpg" /></li>
-                <li><h2>Catherine Dewey</h2><img src="./examples/content/mobile/overview/catherine.jpg" /></li>
+                <li><h2>Carine Schmitt</h2><img src="./examples/content/mobile/overview/carine.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
+                <li><h2>Catherine Dewey</h2><img src="./examples/content/mobile/overview/catherine.jpg" /><a data-role="button" class="unFriendsBtn">삭제</a></li>
             </ul>
         </li>
     </ul>
@@ -190,27 +215,28 @@ function initPullToRefreshScroller(e) {
             개발자소개
         </li>
     </ul>
-    <ul data-role="listview" data-style="inset" data-type="group">
+    <ul data-role="listview" data-style="inset" data-type="group" data-click="settingClick">
         <li>
             나의 프로필
             <ul>
-                <li><h2>Christina <span>Berglund</span></h2><img src="./examples/content/mobile/overview/christina.jpg" /></li>
-                <li>Username <span class="value">christina</span></li>
-                <li>Email <span class="value">clientservice at kendoui.com</span></li>
+                <li><h2><div id="moreinfo_school">소속</div><span id="moreinfo_nickname">이름</span></h2><img id="myprofilePicture" src="./res/undefine.gif" /></li>
+                <li>Username <span class="value" id="moreinfo_username">페이스북으로 로그인중</span></li>
+                <li>Email <span class="value" id="moreinfo_email">User Email</span></li>
             </ul>
         </li>
         <li>
             SNS 설정
             <ul>
-                <li>페이스북 연동 <input type="checkbox" data-role="switch" checked></li>
+                <li>페이스북 연동 <input type="checkbox" data-role="switch" data-change="connectFacebook" id="facebookSwitch"></li>
             </ul>
         </li>
         <li>
             계정관리
             <ul>
-                <li>회원정보 수정</li>
-                <li>로그아웃</li>
+                <li><a href="#profile-edit">회원정보 수정</a></li>
+                <li><a id="setting_logout">로그아웃</a></li>
             </ul>
+
         </li>
     </ul>
     <ul data-role="listview" data-style="inset" data-type="group" style="display:none">
@@ -268,7 +294,26 @@ function initPullToRefreshScroller(e) {
 
 
 
+
+
+<div data-role="view" data-layout="overview-layout" id="profile-edit" data-title="프로필수정">
+  <header data-role="header">
+    <div data-role="navbar">
+      <span data-role="view-title"></span>
+      <a data-align="left" data-role="backbutton" class="nav-button">Back</a>
+      <a data-align="right" data-role="backbutton" class="nav-button">Save</a>
+    </div>
+  </header> 
+
+  <ul data-role="listview" data-style="inset">
+    sdfsdf
+  </ul>
+
+</div>
+
+
 <div data-before-show="writeView_load" data-role="view" data-layout="overview-layout" id="overview-write" data-title="글쓰기" >
+
   <header data-role="header">
         <div data-role="navbar" class="fileinput-button">
             <span data-role="view-title"></span>
@@ -277,11 +322,27 @@ function initPullToRefreshScroller(e) {
         </div>
     </header>
 
+
   <form name="myform">
     <ul data-role="listview" data-style="inset">
       <textarea rows="7" style="width:100%; border:0px;" name="mytextfield" id="mytextfield"></textarea>
     </ul>
   </form>
+
+<script type="text/javascript">
+  //사진을 첨부했을때
+  $("#profilePhotoFileUpload").on('change',function() {
+    $("#inputPhotoBtn").css("background-color","#25b3fd");
+  });
+
+  //텍스트필드가 포커스 GET
+  $('textarea#mytextfield').focus(function() { 
+    writeMode = 1; 
+    writeFileMode = 0;
+    $(".km-tabstrip").hide();
+  });
+
+</script>
 
 </div>
 
@@ -306,146 +367,6 @@ function initPullToRefreshScroller(e) {
 </div>
 
 
-<script>
-
-
-///////////////////////////////////////////////////////
-// 친구 관련부분
-///////////////////////////////////////////////////////
-function friendsBar() {
-  $("#friendsSubView1").css("display","none");
-  $("#friendsSubView2").css("display","none");
-  $("#friendsSubView3").css("display","none");
-
-  if(this.selectedIndex==0){
-  $("#friendsSubView1").css("display","block");
-  } else if(this.selectedIndex==1) {
-  $("#friendsSubView2").css("display","block");
-  } else {
-  $("#friendsSubView3").css("display","block");
-  }
-}
-
-///////////////////////////////////////////////////////
-// 로그인 부분
-///////////////////////////////////////////////////////
-
-
-function loginFunction(){
-  location.href = "#overview-newsfeed";
-}
-
-
-
-function closeModalViewJoin() {
-    $("#modalview-join").kendoMobileModalView("close");
-}
-
-
-///////////////////////////////////////////////////////
-// 포스트 작성 부분
-///////////////////////////////////////////////////////
-
-  // 글쓰기메서드
-  var writeMode = 0;
-  var writeFileMode = 0;
-  function WriteMethod(){
-
-    if(writeFileMode==0 && writeMode ==1){
-      kendoMobileApplication.showLoading(); 
-      setTimeout(function() { 
-        kendoMobileApplication.hideLoading();
-        $(".km-tabstrip").show();
-        location.href = "#overview-mystory";
-      }, 2500);
-
-    }
-  }
-
-  //파일첨부 눌렀을때
-  function fileClick(){
-    writeFileMode = 1;
-  }
-
-  //텍스트필드가 포커스 잃었을때 
-  document.addEventListener('focusout', function(e) { 
-    if(writeMode==1){
-      writeFileMode = 0;
-      setTimeout(WriteMethod,700);
-    }
-   });
-
-  //텍스트필드가 포커스 GET
-  $('textarea#mytextfield').focus(function() { 
-    writeMode = 1;
-    writeFileMode = 0;
-    $(".km-tabstrip").hide();
-  });
-
-  //뒤로가기
-  function writeBack(){
-    writeMode = 0;
-    location.href = "#overview-mystory";
-    $(".km-tabstrip").show();
-  }
-  
-  //사진을 첨부했을때
-  $("#profilePhotoFileUpload").on('change',function() {
-    $("#inputPhotoBtn").css("background-color","#25b3fd");
-    setTimeout(function(){ document.myform.mytextfield.focus(); },100);
-  });
-
-
-///////////////////////////////////////////////////////
-// 뷰 관련 부분
-///////////////////////////////////////////////////////
-  function loginView_load(){
-
-  }
-
-  //글쓰기뷰
-  function writeView_load(){
-    $('textarea#mytextfield').val('');
-    $("#inputPhotoBtn").css("background-color","#dcdcdc");
-    writeMode = 1;
-    $(".km-tabstrip").hide();
-    setTimeout(function(){ document.myform.mytextfield.focus(); },500);
-  }
-
-  //뉴스피드뷰
-  function newsfeedView_load(){
-  
-  }
-
-  //마이스토리뷰
-  function mystoryView_load(){
-
-
-  }
-
-  //친구목록뷰
-  function myfriendsView_load(){
-
-  }
-
-  //더보기뷰
-  function moreView_load(){
-
-  }
-
-  function mobileAccountViewInit() {
-    var listviews = this.element.find("ul.km-listview");
-
-    $("#settings-view").kendoMobileButtonGroup({
-        select: function() {
-            listviews.hide()
-             .eq(this.selectedIndex)
-             .show();
-        },
-        index: 0
-    });
-  }
-</script>
 
 <style scoped>
 #loginView_Logo{
@@ -483,6 +404,8 @@ function closeModalViewJoin() {
   float: right;
 }
 
+
+.postlist { padding-bottom: 30px;}
 
 .km-writeicon:after,
 .km-writeicon:before
@@ -592,25 +515,9 @@ function closeModalViewJoin() {
   }
 }
 body,html{background-color:#f4f4f4;}
-
 </style>
 
 
-<script>
-
-  document.title = "SSKY STORY";
-  window.kendoMobileApplication = new kendo.mobile.Application($(document.body), {
-    skin : "flat",
-    transition: "slide",
-    statusBarStyle: "black-translucent",
-    icon: {
-      "" : '/favicon.png',
-      "72x72" : '/favicon.png',
-      "114x114" : '/favicon114.png'
-    }
-  });
-
-</script>
 
 
 </body>
